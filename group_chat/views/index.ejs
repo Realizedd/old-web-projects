@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Group Chat</title>
+		<meta charset="utf-8">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    	<script src="/socket.io/socket.io.js"></script>
+    	<script>
+			$.fn.serializeObject = function() {
+					var o = {};
+					var a = this.serializeArray();
+
+					$.each(a, function() {
+						if (o[this.name] !== undefined) {
+						    if (!o[this.name].push) {
+						        o[this.name] = [o[this.name]];
+						    }
+						    o[this.name].push(this.value || '');
+						} else {
+						    o[this.name] = this.value || '';
+						}
+					});
+				return o;
+			};
+
+	        $(document).ready(function() {
+	        	var verified = '<%= verified %>';
+
+	        	if (verified !== 'true') {
+		        	var result = prompt('Your name:');
+		        	console.log('Name: ' + result);
+
+		        	$.post('/verify', {name: result}, function(response) {
+		        		if (!response.verified) {
+		        			$('.container-fluid').hide();
+		        			$(document.body).html('<div class="container-fluid"><h3>Failed to verify your username.</h3><a href="/">Try again</a></div>');
+		        		}
+		        	});
+	        	}
+
+	        	var socket = io.connect();
+
+	        	$('form').submit(function(event) {
+	        		socket.emit('post_message', $(this).serializeObject());
+	        		$(this).closest('form').find("input[type=text], textarea").val("");
+	        		return false;
+	        	});
+
+	        	socket.on('new_message', function(data) {
+	        		$('#chat').append('<p style="padding: 10px 15px 0px 15px">' + data.name + ': ' + data.message + '</p>');
+	        	});
+	        });
+        </script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<h3 style="display: block;">Conversation Board</h3>
+			<div id="chat" style="width: 515px; height: 500px; border: 3px solid lightgray; overflow: scroll;">
+				<% for (var i in messages) { %>
+					<p style="padding: 10px 15px 0px 15px"><%= messages[i] %></p>
+				<% } %>
+			</div>
+			<form role="form">
+				<div class="form-group">
+					<textarea name="message" placeholder="enter your message here" cols="70" rows="3" style="border: 3px solid lightgray; margin-top: 10px; resize: none;"></textarea>
+				</div>
+				<button type="submit" class="btn btn-success">Send</button>
+			</form>
+		</div>
+	</body>
+</html>

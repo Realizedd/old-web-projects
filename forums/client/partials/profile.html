@@ -1,0 +1,20 @@
+<div ng-controller="ProfileController">
+	<div id="profile-containers">
+		<div id="profile-info-content">
+			<p class="important top-cover">{{ user.username }}'s Profile</p>
+			<img src="./../img/avatar.png">
+			<p class="important bottom-cover">Joined: {{ user.created_at }}</p>
+		</div>
+		<div id="profile-wall-content">
+			<div id="profile-wall-content-comment-box">
+				<div id="profile-wall-content-comment-box-wrapper">
+					<form ng-submit="addComment()">
+						<textarea rows="3" placeholder="Type a comment..." ng-model="new_comment.comment"></textarea>
+						<button>Post Comment</button>
+					</form>
+				</div>
+			</div>
+			<div id="profile-wall-content-comments"></div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+<div ng-controller="DashboardController">
+	<h5>Hi {{ user.name }}!</h5>
+	<a href="#/new_question">Add a Question</a>
+	<form ng-submit="logout()">
+		<input type="submit" value="Logout">
+	</form>
+	Search:<input type="text" ng-model="filter_name.message">
+	<table>
+		<tr>
+			<th>Question</th>
+			<th>Answers</th>
+			<th>Action</th>
+		</tr>
+		<tr ng-repeat="question in questions | filter: filter_name">
+			<td ng-bind="question.message"></td>
+			<td ng-bind="question.answers.length"></td>
+			<td>
+				<a href="#/question/{{ question._id }}">Show</a>
+				<a href="#/question/{{ question._id }}/new_answer">Answer</a>
+			</td>
+		</tr>
+	</table>
+	<p ng-show="questions.length <= 0">There are currently no questions.</p>
+</div>

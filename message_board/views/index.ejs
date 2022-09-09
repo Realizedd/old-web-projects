@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Message Board</title>
+		<style>
+			h1 {
+				color: red;
+			}
+
+			* {
+				font-family: tahoma;
+			}
+
+			#message-box {
+				padding: 25px;
+				border: 3px solid black;
+				border-radius: 5px;
+			}
+
+			.comment-box {
+				margin-left: 25px;
+				margin-top: 30px;
+			}
+
+			.form-element label {
+				display: block;
+				margin: 10px 0px;
+			}
+
+			.form-element input, textarea {
+				border: 2px solid black;
+			}
+
+			.form-element textarea {
+				width: 30%;
+			}
+
+			.message {
+				padding: 25px;
+				margin: 10px 0px;
+				border: 3px solid black;
+				border-radius: 5px;
+			}
+
+			.comment {
+				padding: 15px;
+				margin: 10px 0px;
+				margin-left: 25px;
+				border: 3px solid black;
+				border-radius: 5px;
+				width: 30%;
+			}
+
+			button {
+				border: 1px solid black;
+				background-color: white;
+				color: black;
+				box-shadow: 2px 2px 1px black;
+				margin: 10px 0px;
+			}
+
+			textarea {
+				resize: none;
+			}
+
+			.box-sizing-border {
+			    -webkit-box-sizing: border-box;
+			       -moz-box-sizing: border-box;
+			            box-sizing: border-box;
+			}
+		</style>
+	</head>
+	<body>
+		<% if (typeof(error) != 'undefined') { %>
+			<h1>ERROR: <%= error %></h1>
+		<% } else { %>
+			<div id="container">
+				<div id="message-box">
+					<form action="/add_message" method="post">
+						<div class="form-element">
+							<label>Name:</label>
+							<input type="text" name="name" size="25">
+						</div>
+						<div class="form-element">
+							<label>Message:</label>
+							<textarea name="text" class='box-sizing-border' rows="6"></textarea>
+						</div>
+						<button type="submit">Post message</button>
+					</form>
+				</div>
+
+				<% if (typeof(messages) != 'undefined') { %>
+					<% for (var i = 0; i < messages.length; i++) { %>
+						<div class="message">
+							<p>Name: <%= messages[i].name %></p>
+							<p>Message: <%= messages[i].text %></p>
+
+							<% for (var j = 0; j < messages[i].comments.length; j++) { %>
+								<div class="comment">
+									<p>Name: <%= messages[i].comments[j].name %></p>
+									<p>Comment: <%= messages[i].comments[j].text %></p>
+								</div>
+							<% } %>
+
+							<div class="comment-box">
+								<form action="/add_comment" method="post">
+									<input type="hidden" name="_id" value="<%= messages[i]._id %>">
+									<div class="form-element">
+										<label>Name:</label>
+										<input type="text" name="name" size="25">
+									</div>
+									<div class="form-element">
+										<label>Comment:</label>
+										<textarea name="text" rows="6" class='box-sizing-border'></textarea>
+									</div>
+									<button type="submit">Post comment</button>
+								</form>
+							</div>
+						</div>
+					<% } %>
+				<% } %>
+			</div>
+		<% } %>
+	</body>
+</html>

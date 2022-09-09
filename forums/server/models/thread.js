@@ -1,0 +1,11 @@
+module.exports = {
+	CREATE_THREAD: 'INSERT INTO threads (`created_at`, `updated_at`, `user_id`, `title`, `tag`, `body`) VALUES (NOW(), NOW(), ?, ?, ?, ?)',
+	UPDATE_THREAD: 'UPDATE threads SET `updated_at` = NOW() WHERE id=?',
+	GET_ALL_BY_LAST_REPLY: 'SELECT COUNT(replies.`thread_id`) as replies, threads.id as id, threads.title as title, threads.tag as tag, threads.body as body, threads.created_at as creation, users.username as creator, threads.user_id as creator_id FROM threads LEFT JOIN users ON threads.user_id = users.id LEFT JOIN replies ON threads.id = replies.thread_id GROUP BY threads.`id` ORDER BY threads.`updated_at` DESC',
+	GET_ALL_BY_CREATION_DATE: 'SELECT COUNT(replies.`thread_id`) as replies, threads.id as id, threads.title as title, threads.tag as tag, threads.body as body, threads.created_at as creation, users.username as creator, threads.user_id as creator_id FROM threads LEFT JOIN users ON threads.user_id = users.id LEFT JOIN replies ON threads.id = replies.thread_id GROUP BY threads.`id` ORDER BY threads.`created_at` DESC',
+	GET_LATEST_ANNOUNCEMENT: 'SELECT threads.title as title, threads.id as id, threads.created_at as creation, threads.body as body, users.username as creator, users.id as creator_id FROM threads LEFT JOIN users ON users.id = threads.`user_id` WHERE tag="Announcement" ORDER BY threads.created_at DESC LIMIT 1',
+	GET_BY_ID: 'SELECT threads.title as title, threads.tag as tag, threads.body as body, threads.created_at as creation, users.username as creator, users.id as creator_id FROM threads LEFT JOIN users ON users.id = threads.`user_id` WHERE threads.id=?',
+	CREATE_REPLY: 'INSERT INTO replies (`user_id`, `thread_id`, `body`, `created_at`) VALUES (?, ?, ?, NOW())',
+	GET_ALL_REPLIES: 'SELECT replies.body as body, replies.created_at as creation, users.username as creator, users.id as creator_id FROM replies LEFT JOIN users ON users.id = replies.user_id WHERE replies.thread_id = ?',
+	GET_RECENT_REPLIES_WITH_LIMIT: 'SELECT threads.title as title, replies.thread_id as id, replies.created_at as creation, users.username as creator, users.id as creator_id FROM replies LEFT JOIN threads ON threads.id = replies.thread_id LEFT JOIN users ON users.id = replies.user_id ORDER BY replies.created_at DESC LIMIT 3'
+}

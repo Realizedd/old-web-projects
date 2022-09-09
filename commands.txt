@@ -1,0 +1,48 @@
+1. use my_first_db
+
+2. db.createCollection('students')
+
+3 - 4. 
+db.students.insert({name: "Sam", home_state: "CA", lucky_number: 1, birthday: {month: 1, day:1, year:2000}})
+db.students.insert({name: "Dave", home_state: "CA", lucky_number: 2, birthday: {month: 2, day: 2, year:2001}})
+db.students.insert({name: "John", home_state: "CA", lucky_number: 3, birthday: {month: 3, day: 3, year:2002}})
+db.students.insert({name: "Chris", home_state: "CA", lucky_number: 4, birthday: {month: 4, day: 4, year:2003}})
+db.students.insert({name: "Peter", home_state: "CA", lucky_number: 5, birthday: {month: 5, day: 5, year:2004}})
+
+5. db.students.find({})
+
+6. 
+db.students.find({home_state:  "CA"})
+db.students.find({home_state:  “WA”})
+
+7-1. db.students.find({lucky_number: {$gt: 3}})
+7-2. db.students.find({lucky_number: {$lte: 10}})
+7-3. db.students.find( { lucky_number: { $gte: 1, $lte: 9 }  } )
+
+8. db.students.update({}, {$set: {interests: ['coding', 'brunch', 'MongoDB']}}, {multi: true})
+
+9. 
+db.students.update({name: "Sam"}, {$push: {interests: 'Programming'}})
+db.students.update({name: "Dave"}, {$push: {interests: 'Baseball'}})
+db.students.update({name: "Peter"}, {$push: {interests: 'Soccer'}})
+db.students.update({name: "John"}, {$push: {interests: 'Football'}})
+
+10. db.students.update({name: "Sam"}, {$push: {interests: 'taxes'}})
+
+11. db.students.update({name: "Sam"}, {$pull: {interests: 'taxes'}})
+
+12. db.students.remove({home_state: “CA”})
+
+13. db.students.remove({name: “Sam”})
+
+14. db.students.remove({lucky_number: {$gt: 5}}, {justOne: true})
+
+15. db.students.update({}, {$set: {number_of_belts: 0}}, {multi: true})
+
+16. db.students.update({home_state: "WA"}, {$set: {"number_of_belts": 1} }, {multi: true})
+
+17. db.students.update({}, { $rename: {number_of_belts: "belts_earned"} }, {multi: true})
+
+18. db.students.update({}, { $unset: {lucky_number: ""} }, {multi: true})
+
+19. db.students.update({}, {$currentDate: {updated_on: true} }, {multi: true})

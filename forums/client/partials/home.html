@@ -1,0 +1,32 @@
+<div ng-controller="HomeController">
+	<div id="containers">
+		<div id="main-content">
+			<div id="announcement">
+				<div id="title">
+					<a href="#/forum/threads/{{ announcement.id }}" id="title-txt" ng-bind="announcement.title"></a>
+					<p class="thread-info">by <a href="#/members/{{ announcement.creator_id }}" ng-bind="announcement.creator">Realized</a> on {{ announcement.creation }}</p>
+				</div>
+				<div id="content">
+					{{ announcement.body }}
+				</div>
+			</div>
+		</div>
+		<div id="side-content">
+			<div id="side-content-user-info">
+				<div id="side-content-user-info-wrapper">
+					<p class="important top-cover">Welcome back, {{ user.username }}</p>
+					<div id="side-content-img">
+						<img src="./../img/avatar.png">
+					</div>
+				</div>
+			</div>
+			<p class="important">Recent Posts</p>
+			<div id="side-content-recent-posts">
+				<div class="side-content-recent-post" ng-repeat="reply in recent">
+					<a href="#/forum/threads/{{ reply.id }}">{{ reply.title }}</a>
+					<p><a href="#/members/{{ reply.creator_id }}">{{ reply.creator }}</a> at {{ format(reply.creation) }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

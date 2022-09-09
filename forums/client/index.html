@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html ng-app="forums">
+	<head>
+		<title>Home</title>
+		<meta charset="UTF-8">
+
+		<!-- CSS stuff -->
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Baloo+Bhai" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<link rel="stylesheet" type="text/css" href="./css/profile_style.css">
+		<link rel="stylesheet" type="text/css" href="./css/forum_style.css">
+		<link rel="stylesheet" type="text/css" href="./css/create_thread_style.css">
+		<link rel="stylesheet" type="text/css" href="./css/view_thread_style.css">
+
+		<!-- Libraries -->
+		<script src="./js/lib/jquery.min.js"></script>
+		<script src="./js/lib/angular.min.js"></script>
+	    <script src="./js/lib/angular-route.min.js"></script>
+
+	    <!-- Main init - order matters! -->
+	    <script src="./js/config.js"></script>
+	    <script src="./js/factories.js"></script>
+	    <script src="./js/controllers.js"></script>
+		<script src="./js/interaction.js"></script>
+	</head>
+	
+	<body>
+		<div class="drop-menu" ng-controller="DropMenuController">
+			<div id="register" class="account-management-form">
+				<form ng-submit="attemptRegister()">
+					<fieldset>
+						<legend>Register</legend>
+
+						<div class="account-management-form-element">
+							<label for="username">Username:</label>
+							<input type="text" name="username" ng-model="registration.username" placeholder="Type a username...">
+						</div>
+
+						<div class="account-management-form-element">
+							<label for="email">Email:</label>
+							<input type="text" name="email" ng-model="registration.email" placeholder="Type an email...">
+						</div>
+
+						<div class="account-management-form-element">
+							<label for="password">Password:</label>
+							<input type="password" name="password" ng-model="registration.password" placeholder="Type a password...">
+						</div>
+
+						<button>Register</button>
+					</fieldset>
+				</form>
+			</div>
+
+			<div id="login" class="account-management-form">
+				<form ng-submit="attemptLogin()">
+					<fieldset>
+						<legend>Login</legend>
+
+						<div class="account-management-form-element">
+							<label for="email">Email:</label>
+							<input type="text" name="email" ng-model="login.email" placeholder="Type an email...">
+						</div>
+
+						<div class="account-management-form-element">
+							<label for="password">Password:</label>
+							<input type="password" name="password" ng-model="login.password" placeholder="Type a password...">
+						</div>
+
+						<button>Login</button>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+
+		<div class="containers">
+			<div id="nav">
+				<ul>
+					<li><a href="#/"><i class="fa fa-home fa-lg" aria-hidden="true"></i>Home</a></li>
+					<li><a href="#/forum"><i class="fa fa-users fa-lg" aria-hidden="true"></i>Forum</a></li>
+					<li><a href="#/chat"><i class="fa fa-comments fa-lg" aria-hidden="true"></i>Live Chat</a></li>
+					<li class="user-info"></li>
+				</ul>
+			</div>
+			<div ng-view=""></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="friends_app">
+	<head>
+		<title>Full Mean Demo</title>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+	    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
+	    <script>
+	    	// Initializes our new application
+	    	var app = angular.module('friends_app', []);
+
+	    	// Creates a new factory that handles friends
+	    	app.factory('FriendFactory', function($http) {
+	    		var factory = {};
+	    		var friends = [];
+
+	    		// Requests for a list of friends to the backend
+	    		factory.index = function(callback) {
+	    			$http.get('/friends').success(function(output) {
+	    				// If successful, updates the friend list and calls the callback function
+	    				friends = output;
+	    				callback(friends);
+	    			});
+	    		}
+
+	    		factory.create = function(info, callback) {
+	    			$http.post('/friends', info).success(function(output) {
+	    				// Same as above, updates the friend list if a new friend was added
+						friends = output;
+	    				callback(friends);
+	    			});
+	    		}
+
+	    		factory.delete = function(info, callback) {
+	    			$http.delete('/friends/' + info._id, info).success(function(output) {
+	    				friends.splice(friends.indexOf(info), 1);
+	    			});
+	    		}
+
+	    		return factory;
+	    	});
+
+	    	// Creates a new controller that handles friends
+	    	app.controller('FriendsController', function($scope, FriendFactory) {
+	    		// Calls index method to get the list of friends
+	    		FriendFactory.index(function(data) {
+	    			$scope.friends = data;
+	    		});
+
+	    		$scope.add_friend = function() {
+	    			FriendFactory.create($scope.new_friend, function(data) {
+	    				// If creation was successful, updates the controllers friend list for the view
+	    				$scope.friends = data;
+			    		$scope.new_friend = {};
+	    			});
+	    		}
+
+	    		$scope.remove_friend = function(friend) {
+	    			FriendFactory.delete(friend, function(data) {});
+	    		}
+	    	});
+	    </script>
+	</head>
+	<body ng-controller="FriendsController">
+		<h1>Friends</h1>
+		<input type="text" placeholder="filter" ng-model="filter_name">
+		{{filter_name}}
+
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Actions</th>
+			</tr>
+			<tr ng-repeat="friend in friends | filter: filter_name">
+				<td>{{ friend.name }}</td>
+				<td>{{ friend.age }}</td>
+				<td>
+					<form>
+						<input type="submit" value="Remove" ng-click="remove_friend(friend)">
+					</form>
+				</td>
+			</tr>
+		</table>
+		<h1>Add a Friend</h1>
+		<input type="text" placeholder="name" ng-model="new_friend.name">
+		<input type="text" placeholder="age" ng-model="new_friend.age">
+		<input type="submit" ng-click="add_friend()">
+	</body>
+</html>

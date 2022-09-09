@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Survey Form</title>
+	</head>
+	<body>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Actions</th>
+		</tr>
+		<% for (index in users) { %>
+			<tr>
+				<td><%= users[index] %></td>
+				<td>
+				<form method="POST" action="/delete/<%= index %>">
+					<button>Delete</button>
+				</form>
+				</td>
+			</tr>
+		<% } %>
+	</table>
+	<form method="POST" action="/result">
+		<label for="name">Your Name:</label>
+		<input type="text" name="name">
+		<br>
+		<label for="location">Dojo Location:</label>
+		<select name="location">
+			<option value="Mountain View">Mountain View</option>
+		</select>
+		<br>
+		<label for="language">Favorite Language:</label>
+		<select name="language">
+			<option value="JavaScript">JavaScript</option>
+		</select>
+		<br>
+		<label for="comment">Comment (Optional):</label>
+		<textarea name="comment"></textarea>
+		<br>
+		<button>Submit</button>
+	</form>
+	</body>
+</html>

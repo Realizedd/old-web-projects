@@ -1,0 +1,12 @@
+{
+  "name": "user_infrastructure",
+  "version": "1.0.0",
+  "description": "Base structure for building websites in the future.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Samuel Lim",
+  "license": "ISC"
+}

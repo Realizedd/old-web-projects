@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Products</title>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+	    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
+	    <script>
+			var app = angular.module('productManager', ['ngRoute']);
+
+			app.config(function($routeProvider) {
+				$routeProvider.when('/', {
+					templateUrl: 'index.html'
+				});
+			});
+
+			app.factory('productFactory', function() {
+				var products = [];
+				var factory = {};
+
+				factory.get_products = function(callback) {
+					callback(products);
+				}
+
+				factory.add_product = function(new_product) {
+					products.push(new_product);
+				}
+
+				factory.remove_product = function(product) {
+					products.splice(products.indexOf(product), 1);
+				}
+
+				return factory;
+			});
+
+			app.controller('productsController', function($scope, productFactory) {
+				$scope.products = [];
+
+				productFactory.get_products(function(data) {
+					$scope.products = data;
+				});
+
+				$scope.add_product = function() {
+					productFactory.add_product($scope.new_product);
+					$scope.new_product = {};
+				}
+
+				$scope.remove_product = function(product) {
+					productFactory.remove_product(product);
+				}
+			});
+		</script>
+	</head>
+	<body ng-app='productManager'>
+		<div ng-controller='productsController'>
+			<form>
+				<fieldset>
+					<legend>Products Controller</legend>
+					<label>Product Name:</label>
+					<input type="text" ng-model="new_product.name">
+					<label>Product Price:</label>
+					<input type="text" ng-model="new_product.price">
+					<input type="submit" ng-click="add_product()" value="Add Product">
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Price</th>
+							<th>Actions</th>
+						</tr>
+						<tr ng-repeat="product in products">
+							<td ng-bind="product.name"></td>
+							<td ng-bind="product.price"></td>
+							<td>
+								<form>
+									<input type="submit" ng-click="remove_product(product)" value="Delete Product">
+								</form>
+							</td>
+						</tr>
+					</table>
+				</fieldset>
+			</form>
+		</div>
+	</body>
+</html>

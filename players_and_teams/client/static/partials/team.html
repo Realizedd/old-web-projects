@@ -1,0 +1,6 @@
+<div ng-controller='TeamsController'>
+	<h3>Information of Team {{ current_team.name }}</h3>
+	<p>There are {{ current_team.players.length }} player(s) assigned to this team.</p>
+	<p style="display: inline-block;"">Player(s): </p>
+	<p ng-repeat="player in current_team.players" style="display: inline-block;">{{ player }},</p>
+</div>

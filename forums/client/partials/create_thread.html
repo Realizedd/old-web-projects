@@ -1,0 +1,29 @@
+<div ng-controller="ThreadCreateController">
+	<div id="create-thread-containers">
+		<div id="create-thread-main-content-wrapper">
+			<div id="create-thread-main-content">
+				<form>
+					<fieldset>
+						<legend>Create a New Thread</legend>
+
+						<div class="create-thread-main-content-form-element">
+							<label>Title:</label>
+							<input type="text" name="title" ng-model="new_thread.title" placeholder="Title...">
+						</div>
+
+						<div class="create-thread-main-content-form-element">
+							<label>Tag:</label>
+							<input type="text" name="tag" ng-model="new_thread.tag" placeholder="Tag...">
+						</div class="create-thread-main-content-form-element">
+
+						<div>
+							<textarea name="body" ng-model="new_thread.body"></textarea>
+						</div>
+
+						<button type="button" ng-click="createThread()">Post Thread</button>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

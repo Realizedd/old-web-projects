@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hunting GitHub</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#my_button').click(function() {
+					$.get('https://api.github.com/users/RealizedMC', displayName);
+				});
+
+				function displayName(data) {
+					$(document.body).append(data.name);
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div id="main_content">
+			<button id="my_button" style="background-color:blue;">A Button.</button>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Edit: <%= lion.name %></title>
+		<style>
+			button {
+				display: block;
+				margin-bottom: 5px;
+				border: none;
+				background-color: lightgray;
+				font-weight: bold;
+				padding: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>Edit Lion <%= lion.name %></h3>
+		<form action="/lions/<%= lion._id %>" method="post">
+			<label>New Name:</label>
+			<input type="text" name="name" value="<%= lion.name %>">
+			<label>New Age:</label>
+			<input type="text" name="age" value="<%= lion.age %>">
+			<button type="submit">Update</button>
+		</form>
+		<button onclick="location.href = '/'">Return to Home</button>
+	</body>
+</html>

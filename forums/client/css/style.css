@@ -1,0 +1,279 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: tahoma;
+	background-color: #dbdbdb;
+}
+
+/*    UTILS     */
+
+.important {
+	color: white;
+	font-weight: bold;
+	background-color: #4879a5;
+	border: 1px solid #406c94;
+	padding: 5px;
+	margin: 0;
+}
+
+.top-cover {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.bottom-cover {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.timestamp {
+	float: right;
+	margin-top: 225px;
+	margin-right: 5px;
+}
+
+/*    UTILS     */
+
+.drop-menu {
+	width: 100%;
+	height: 370px;
+	background-color: white;
+	font-family: 'Baloo Bhai';
+}
+
+.account-management-form {
+	display: inline-block;
+	width: 400px;
+	height: 100%;
+	margin-top: 15px;
+}
+
+.account-management-form legend {
+	font-family: 'Baloo Bhai';
+	color: #396084;
+	padding: 0px 5px;
+}
+
+.account-management-form fieldset {
+	margin: 0px 15px;
+	padding-bottom: 50px;
+	border: 3px solid #4879a5;
+}
+
+#register {
+	margin-left: 7.5%;
+}
+
+#login {
+	margin-right: 7.5%;
+	float: right;
+}
+
+.account-management-form-element {
+	width: 330px;
+	height: 50px;
+}
+
+.account-management-form-element label {
+	vertical-align: middle;
+	font-size: 13px;
+}
+
+.account-management-form-element input {
+	float: right;
+	border: 2px solid #4879a5;
+	border-radius: 5px;
+	width: 170px;
+	height: 25px;
+	font-size: 12px;
+	padding-left: 5px;
+}
+
+.account-management-form button {
+	border: 2px solid lightgray;
+	border-radius: 5px;
+	font-weight: bold;
+	padding: 5px 10px;
+}
+
+#nav {
+	overflow: hidden;
+	height: 50px;
+	width: 85%;
+	margin: 15px auto;
+}
+
+#nav ul {
+	list-style-type: none;
+	padding: 15px 0px;
+	background-color: #4879a5;
+	border: 1px solid #406c94;
+	border-radius: 5px;
+	box-sizing: border-box;
+	margin: 0px 0px;
+	width: 100%;
+	height: 100%;
+}
+
+#nav ul li {
+	display: inline-block;
+	margin-left: 15px;
+}
+
+#nav ul li a {
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+#nav ul li a i {
+	padding-right: 0.1em;
+}
+
+#nav ul li:hover {
+	transition-duration: 0.3s;
+	transition-property: transform;
+	transform: scale(1.1);
+}
+
+.user-info {
+	float: right;
+	margin-right: 15px;
+}
+
+#containers {
+	margin: 25px auto;
+	width: 85%;
+	height: 600px;
+	position: relative;
+}
+
+#main-content {
+	display: inline-block;
+	width: 78%;
+	height: 100%;
+	background-color: #859ab2;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+#announcement {
+	margin: 2.5% auto;
+	height: 95%;
+	width: 95%;
+	background-color: #b8c4d0;
+	border-radius: 5px;
+}
+
+#title {
+	width: 100%;
+	height: 10%;
+	background-color: #92b7ce;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	box-shadow: 0px 2.5px 2.5px #888888;
+}
+
+#title-txt {
+	color: #e9e9e9;
+	font-size: 20px;
+	font-family: 'Baloo Bhai';
+	margin: 0;
+	display: inline-block;
+	padding-left: 15px;
+	border-spacing: 15px;
+	margin-top: 2%;
+	text-decoration: none;
+}
+
+.thread-info {
+	display: inline-block;
+	float: right;
+	font-size: 15px;
+	font-family: 'Baloo Bhai';
+	color: #e9e9e9;
+	margin-right: 15px;
+}
+
+.thread-info a {
+	text-decoration: none;
+	color: #7991ba;
+}
+
+#content {
+	width: 85%;
+	margin: 15px 15px;
+	overflow: hidden;
+	line-height: 25px;
+	font-size: 14px;
+	height: 75%;
+	color: #2e2e2e;
+}
+
+#side-content {
+	display: inline-block;
+	margin-left: 2%;
+	width: 20%;
+	height: 100%;
+	float: right;
+	background-color: #859ab2;
+	border-radius: 5px;
+}
+
+#side-content-user-info {
+	height: 250px;
+	width: 100%;
+}
+
+#side-content-user-info-wrapper button {
+	color: white;
+	font-size: 20px;
+	font-family: 'Baloo Bhai';
+	display: block;
+	margin: 50px auto;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 1.5px 1.5px 5px #888888;
+	padding: 5px 10px;
+	background-color: #92b7ce;
+}
+
+#side-content-img {
+	width: 95%;
+	height: auto;
+	margin: 5px auto;
+	background-color: #92b7ce;
+	border-radius: 5px;
+	border: 2px solid gray;
+}
+
+#side-content-img img {
+	width: 100%;
+	height: 100%;
+}
+
+#side-content-recent-posts {
+	margin: 0 auto;
+	width: 100%;
+	height: auto;
+}
+
+.side-content-recent-post {
+	border-bottom: 1px solid gray;
+	padding: 5px 0;
+	font-family: 'Baloo Bhai';
+}
+
+.side-content-recent-post p {
+	margin: 0;
+	margin-top: 5px;
+	font-size: 12px;
+	color: #345579;
+}
+
+.side-content-recent-post a {
+	margin-left: 5px;
+	text-decoration: none;
+	color: #eff3f8;
+}

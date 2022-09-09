@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Dashboard</title>
+		<style>
+			* {
+				font-family: tahoma;
+			}
+
+			h2 {
+				color: red;
+			}
+
+			td {
+				padding: 15px;
+			}
+
+			button {
+				display: block;
+				margin-bottom: 5px;
+				border: none;
+				background-color: lightgray;
+				font-weight: bold;
+				padding: 5px;
+			}
+
+			table {
+				background-color: #ededed;
+			}
+
+			th {
+				padding: 5px;
+			}
+
+			tr {
+				background-color: white;
+				border: 3px solid gray;
+			}
+		</style>
+	</head>
+	<body>
+		<% if (typeof(errors) != 'undefined') { %>
+			<h2><%= errors %></h2>
+		<% } %>
+
+		<h3>Lions</h3>
+
+		<% if (typeof(lions) != 'undefined' && lions.length > 0) { %>
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Actions</th>
+				</tr>
+			<% for (var i in lions) { %>
+				<tr>
+					<td><%= lions[i].name %></td>
+					<td><%= lions[i].age %></td>
+					<td>
+						<button onclick="location.href = '/lions/<%= lions[i]._id %>/show'">View</button>
+						<button onclick="location.href = '/lions/<%= lions[i]._id %>/edit'">Edit</button>
+						<form action="/lions/<%= lions[i]._id %>/destroy" method='post'>
+							<button type="submit">Delete</button>
+						</form>
+					</td>
+				</tr>
+			<% } %>
+			</table>
+		<% } else { %>
+			<p>No lions found :(</p>
+		<% } %>
+
+		<button style="margin: 10px 0px;" onclick="location.href = '/lions/new'">Click to create a lion!</button>
+	</body>
+</html>

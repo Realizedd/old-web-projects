@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Product Manager</title>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
+		<script>
+			var app = angular.module('productManager', ['ngRoute']);
+
+			app.config(function($routeProvider) {
+				$routeProvider.when('/', {
+					templateUrl: 'index.html'
+				});
+			});
+
+			app.controller('productsController', function($scope) {
+				$scope.products = [];
+				console.log($scope.products);
+				$scope.addProduct = function() {
+					$scope.products.push($scope.newProduct);
+					$scope.newProduct = {};
+				}
+			});
+		</script>
+	</head>
+	<body ng-app='productManager'>
+		<div ng-controller='productsController'>
+			<form>
+				<label>Favorite Food</label>
+				<input type="text" ng-model="newProduct.name">
+				<input type="submit" value="Add Food" ng-click="addProduct()">
+			</form>
+
+			<!-- Only show this field if input is not empty. ng-hide and ng-show will have the same affect. -->
+			<p ng-if="newProduct.name">Currently typing: <span ng-bind="newProduct.name"></span></p>
+
+			<div ng-if="products.length > 0">
+				<input type="text" ng-model="search" placeholder="filter...">
+				<ul>
+					<li ng-repeat="product in products | filter:search | orderBy:'name'">
+						<span ng-init='product_name = product.name' ng-bind='product_name'></span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

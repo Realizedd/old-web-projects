@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Survey Form</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    	<script src="/socket.io/socket.io.js"></script>
+    	<script>
+	        $(document).ready(function() {
+	        	var counter = parseInt('<%= counter %>');
+
+	        	$('#counter').text('The button has been pushed ' + counter + ' time(s)');
+
+	            var socket = io.connect();
+
+	            socket.on('reset_counter', function(data) {
+	            	counter = 0;
+	            	$('#counter').text('The button has been pushed 0 time(s)');
+	            });
+
+				socket.on('update_counter', function(data) {
+				    $('#counter').text('The button has been pushed ' + (++counter) + ' time(s)');
+				});
+
+				$('#increase').click(function() {
+					socket.emit('increase', {});
+				});
+
+				$('#reset').click(function() {
+					socket.emit('reset', {});
+				});
+	        });
+        </script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<h3 id="counter" style="font-weight:normal;">The button has been pushed 0 time(s)</h3>
+			<p>Push the button to update the count!</p>
+			<button id="increase">Push the epic button</button>
+			<button id="reset">Reset count</button>
+		</div>
+	</body>
+</html>

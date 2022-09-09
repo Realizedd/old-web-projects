@@ -1,0 +1,12 @@
+<div ng-controller="LoginController">
+	<div id="login">
+		<!-- <p>Type a nickname!</p> -->
+		<form ng-submit="proceed()">
+			<label for="name">Type a nickname!</label>
+			<input type="text" ng-model="user.name" name="name">
+			<label for="code">Code for Controller app:</label>
+			<input type="text" ng-model="user.code" name="code" id="code" disabled>
+			<input type="submit" value="Play">
+		</form>
+	</div>
+</div>

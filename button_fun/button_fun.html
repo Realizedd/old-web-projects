@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Button Fun!</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('#my_button').click(function() {
+					console.log($(this).css('background-color'));
+
+					if ($(this).css('background-color') == 'rgb(0, 0, 255)') {
+						$(this).css('background-color', 'red');
+					} else {
+						$(this).css('background-color', 'blue');
+					}
+				});
+
+				$('#my_button').hover(function() {
+					$(this).css('background-color', 'green');
+				}, function() {
+					$(this).css('background-color', 'blue');
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="main_content">
+			<button id="my_button" style="background-color:blue;">A Button.</button>
+		</div>
+	</body>
+</html>

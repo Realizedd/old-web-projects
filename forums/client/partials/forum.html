@@ -1,0 +1,50 @@
+<div ng-controller="ThreadListController">
+	<div id="forum-containers">
+		<div id="forum-main-content">
+			<div id="forum-main-content-list">
+				<div id="form-main-content-info">
+					<p id="form-main-content-info-text">Forum <i class="fa fa-angle-double-right fa-lg" aria-hidden="true"></i> Create new threads & Reply to other people's threads!</p>
+				</div>
+				<div class="form-main-content-block">
+					<label>Order By:</label>
+					<select id="form-main-content-type" ng-model="sort_option" ng-change="updateThreads()">
+						<option value="" hidden>Last Reply</option>
+						<option value="latest_reply">Last Reply</option>
+						<option value="create_time">Create Time</option>
+						<option disabled>Most Viewed (Soon)</option>
+					</select>
+				</div>
+				<div id="forum-main-content-table">
+					<table>
+						<tr>
+							<th>Title</th>
+							<th>Tag</th>
+							<th>Replies</th>
+							<th>Lastest Post</th>
+						</tr>
+						<tr ng-repeat="thread in threads">
+							<div class="wrapper">
+							<!-- Probably thread id stored as attr, for onClick jquery -->
+								<td class="forum-main-content-table-content" class="title" link="#/forum/threads/{{ thread.id }}">{{ thread.title }}</td>
+								<td class="forum-main-content-table-content" link="#/forum/threads/{{ thread.id }}">
+									<p class="tag">{{ thread.tag }}</p>
+								</td>
+								<td class="forum-main-content-table-content" link="#/forum/threads/{{ thread.id }}">
+									<span>{{ thread.replies }}</span>
+								</td>
+								<td class="forum-main-content-table-content" link="#/forum/threads/{{ thread.id }}">
+									<a href="#/members/{{ thread.creator_id }}">{{ thread.creator }}</a>
+								</td>
+							</div>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="form-sub-content">
+			<div id="forum-sub-content-contents">
+				<a href="#/forum/new"><button>Post New Thread</button></a>
+			</div>
+		</div>
+	</div>
+</div>

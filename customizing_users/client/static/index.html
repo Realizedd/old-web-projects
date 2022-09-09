@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>User Dashboard</title>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+	    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
+	    <script>
+			var app = angular.module('userManager', ['ngRoute']);
+
+			app.config(function($routeProvider) {
+				$routeProvider.when('/', {
+					templateUrl: '/partials/customizeUsers.html'
+				}).when('/users', {
+					templateUrl: '/partials/customizeUsers.html'	
+				}).when('/list', {
+					templateUrl: '/partials/userList.html'
+				}).otherwise({
+					redirectTo: '/'
+				});
+			});
+
+			app.factory('userFactory', function() {
+				var users = [];
+				var factory = {};
+
+				factory.get_users = function(callback) {
+					callback(users);
+				}
+
+				factory.add_user = function(new_user) {
+					users.push(new_user);
+				}
+
+				factory.remove_user = function(user) {
+					users.splice(users.indexOf(user), 1);
+				}
+
+				return factory;
+			});
+
+			app.controller('CustomizeUsersController', function($scope, userFactory) {
+				$scope.users = [];
+
+				userFactory.get_users(function(data) {
+					$scope.users = data;
+				});
+
+				$scope.add_user = function() {
+					userFactory.add_user($scope.new_user);
+					$scope.new_user = {};
+					
+				}
+
+				$scope.remove_user = function(user) {
+					userFactory.remove_user(user);
+				}
+			});
+
+			app.controller('UserListsController', function($scope, userFactory) {
+				$scope.users = [];
+
+				userFactory.get_users(function(data) {
+					$scope.users = data;
+				});
+			});
+		</script>
+	</head>
+	<body ng-app='userManager'>
+		<div id="nav">
+			<a href="#/users">Customize Users</a>
+			<a href="#/list">User List</a>
+		</div>
+		<div ng-view=""></div>
+	</body>
+</html>

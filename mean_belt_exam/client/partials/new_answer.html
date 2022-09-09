@@ -1,0 +1,15 @@
+<div ng-controller="AnswersController">
+	<a href="#/">Home</a>
+	<a href="#/question/{{ question._id }}">Go Back to Question</a>
+	<form ng-submit="logout()">
+		<input type="submit" value="Logout">
+	</form>
+	<h3>{{ question.message }}</h3>
+	<p>{{ question.description }}</p>
+	<form ng-submit="add_answer()">
+		Your Answer:<input type="text" ng-model="new_answer.message">
+		Supporting details for your answer (optional):<textarea ng-model="new_answer.description"></textarea>
+		<button type="button" onclick="location.href = '#/'">Cancel</button>
+		<input type="submit" value="Submit">
+	</form>
+</div>

@@ -1,0 +1,23 @@
+<div ng-controller='PlayersController'>
+	<form name="player_form" novalidate />
+		<input type="text" name="name" ng-model="new_player.name" required />
+		<input type="submit" value="Add Player" ng-click="add_player()">
+		<div ng-messages="player_form.name.$error">
+		    <p ng-message="required">Please fill out the name field to submit this form.</p>
+		</div>
+	</form>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Actions</th>
+		</tr>
+		<tr ng-repeat="player in players">
+			<td ng-bind="player.name"></td>
+			<td>
+				<form>
+					<input type="submit" value="Remove Player" ng-click="remove_player(player)">
+				</form>
+			</td>
+		</tr>
+	</table>
+</div>

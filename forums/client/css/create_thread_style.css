@@ -1,0 +1,76 @@
+#create-thread-containers {
+	margin: 25px auto;
+	width: 85%;
+	height: 600px;
+	position: relative;
+}
+
+#create-thread-main-content-wrapper {
+	margin: 0 auto;
+	background-color: #a6b6c7;
+	width: 75%;
+	border-radius: 5px;
+	height: 600px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#create-thread-main-content {
+	background-color: #b8c4d0;
+	width: 95%;
+	height: 95%;
+	border-radius: 5px;
+}
+
+#create-thread-main-content legend {
+	font-family: 'Baloo Bhai';
+	color: #396084;
+	padding: 0px 5px;
+}
+
+#create-thread-main-content fieldset {
+	margin: 0px 15px;
+	border: 3px solid #4879a5;
+}
+
+#create-thread-main-content textarea {
+	resize: none;
+	margin: 0 auto;
+	display: block;
+	width: 95%;
+	height: 350px;
+	border: none;
+	border-radius: 5px;
+}
+
+#create-thread-main-content button {
+	color: white;
+	font-size: 20px;
+	font-family: 'Baloo Bhai';
+	display: block;
+	margin: 10px auto;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 1.5px 1.5px 5px #888888;
+	padding: 5px 10px;
+	background-color: #83a4b9;
+}
+
+.create-thread-main-content-form-element {
+	width: 240px;
+	height: 50px;
+}
+
+.create-thread-main-content-form-element label {
+	font-family: 'Baloo Bhai';
+	color: #396084;
+}
+
+.create-thread-main-content-form-element input {
+	float: right;
+	border: none;
+	border-radius: 5px;
+	font-size: 15px;
+	padding: 5px 10px;
+}

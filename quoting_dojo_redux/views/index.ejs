@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>QuotingDojo</title>
+	</head>
+	<body>
+		<form action="/quotes" method="post">
+			<label>Your name:</label>
+			<input type="text" name="name">
+			<label>Your quote:</label>
+			<textarea name="message" style="resize: none;" cols="50" rows="4"></textarea>
+			<button type="submit">Add my quote!</button>
+		</form>
+		<button onclick="location.href = '/quotes'">Skip to quotes!</button>
+	</body>
+</html>

@@ -1,0 +1,110 @@
+#profile-containers {
+	margin: 25px auto;
+	width: 85%;
+	height: 600px;
+	position: relative;
+}
+
+#profile-info-content {
+	display: inline-block;
+	background-color: #859ab2;
+	width: 30%;
+	border-radius: 5px;
+	height: auto;
+}
+
+#profile-info-content p {
+	color: white;
+	font-family: 15px;
+}
+
+#profile-info-content img {
+	display: block;
+	margin: 15px auto;
+	background-color: #92b7ce;
+	border-radius: 5px;
+	border: 2px solid gray;
+}
+
+#profile-wall-content {
+	display: inline-block;
+	background-color: #859ab2;
+	width: 67.5%;
+	margin-left: 2.5%:;
+	border-radius: 5px;
+	height: 600px;
+	float: right;
+}
+
+#profile-wall-content-comment-box {
+	padding: 10px;
+	margin: 15px auto;
+	width: 90%;
+	height: 100px;
+	background-color: #b8c4d0;
+	border-radius: 5px;
+}
+
+#profile-wall-content-comment-box-wrapper {
+	margin: 0px auto;
+	width: 95%;
+	height: 100%;
+}
+
+#profile-wall-content-comment-box-wrapper textarea {
+	resize: none;
+	width: 100%;
+	border: 2px solid #4879a5;
+	border-radius: 5px;
+}
+
+#profile-wall-content-comment-box-wrapper button {
+	float: right;
+	margin-top: 5px;
+	margin-right: -5px;
+	border: none;
+	border-radius: 2px;
+	box-shadow: 1.5px 1.5px 5px #888888;
+	padding: 5px;
+	background-color: #92b7ce;
+}
+
+#profile-wall-content-comments {
+	padding: 10px;
+	margin: 15px auto;
+	width: 90%;
+	height: calc(100% - 185px);
+	background-color: #b8c4d0;
+	border-radius: 5px;
+}
+
+.profile-wall-content-comment {
+	margin: 5px auto;
+	height: 50px;
+	width: 97.5%;
+	border: 2px solid #4879a5;
+	border-radius: 5px;
+	background-color: #bdd3e1;
+}
+
+.profile-wall-content-comment a {
+	text-decoration: none;
+	color: #7991ba;
+	font-family: 'Baloo Bhai';
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-right: 2.5px;
+}
+
+.profile-wall-content-comment p {
+	display: inline-block;
+	margin: 0;
+	margin-top: 5px;
+	font-size: 13px;
+}
+
+.profile-wall-content-comment p:last-child {
+	display: block;
+	font-size: 10px;
+	margin-left: 5px;
+}

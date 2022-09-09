@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>A Web Page</title>
+		<style>
+			.comment {
+				margin-left: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>The Dojo Message Board</h2>
+		<hr>
+		<h3>Post a message!</h3>
+		<div id="post_message">
+			<form action="/messages" method="post">
+				<label for="name">Name:</label>
+				<input type="text" name="name">
+				<label for="message">Message:</label>
+				<textarea name="message"></textarea>
+				<button>Post message</button>
+			</form>
+		</div>
+		<hr>
+		<div id="messages">
+			<% for (index in messages) { %>
+				<p>Name: <%= messages[index].name %></p>
+				<p>Message: <%= messages[index].text %></p>
+				<% for (var i = 0; i < messages[index].comments.length; i++) { %>
+					<div class="comment">
+						<p>Name: <%= messages[index].comments[i].name %></p>
+						<p>Comment: <%= messages[index].comments[i].text %></p>
+					</div>
+				<% } %>
+				<div class="add_comment">
+					<form action="/messages/<%= messages[index]._id %>" method="post">
+						<label for="name">Name:</label>
+						<input type="text" name="name">
+						<label for="message">Comment:</label>
+						<textarea name="message"></textarea>
+						<button>Post comment</button>
+					</form>
+				</div>
+			<% } %>
+		</div>
+	</body>
+</html>

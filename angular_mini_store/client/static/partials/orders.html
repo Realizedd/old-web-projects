@@ -1,0 +1,41 @@
+<div ng-controller='ordersController'>
+	<div id="nav">
+		<p style="display: inline-block;">Orders</p>
+		<p style="display: inline-block;">|</p>
+		<a href="#/customers">Customers</a>
+	</div>
+	<p style="font-weight:bold; text-decoration: underline;">Add a new order</p>
+	<form>
+		<label for="customer" style="font-weight: normal;">Customer</label>
+		<!-- <select name="customer" ng-model="new_order.customer" ng-options="customer in customers"></select> -->
+		<select name="customer" ng-model="new_order.customer">
+			<option ng-repeat="customer in customers" ng-bind="customer.name" value="customer.name"></option>
+		</select>
+		<label for="quantity">Order</label>
+		<input type="number" name="quantity" ng-model="new_order.quantity" step="1" min="1" value="1">
+		<select name="product" ng-model="new_order.product">
+			<option value="Nike Shoes">Nike Shoes</option>
+			<option value="Black Belts">Black Belts</option>
+			<option value="Ice Cream">Ice Cream</option>
+			<option value="Candy">Candy</option>
+		</select>
+		<input type="submit" value="Order" class="btn btn-primary" ng-click="add_order()">
+	</form>
+	<input type="text" name="filter" ng-model="search" placeholder="search name...">
+	<table class="table table-striped">
+		<tr>
+			<th>Customer Name</th>
+			<th>Product</th>
+			<th>Quantity</th>
+			<th>Date</th>
+		</tr>
+		<tbody ng-repeat="customer in customers">
+			<tr ng-repeat="order in customer.orders | filter:search | orderBy:'created_at':true"">
+				<td ng-bind="customer.name"></td>
+				<td ng-bind="order"></td>
+				<td ng-bind="order.quantity"></td>
+				<td ng-bind="format_date(order.created_at)"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

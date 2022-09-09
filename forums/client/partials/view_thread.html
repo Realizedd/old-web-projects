@@ -1,0 +1,37 @@
+<div ng-controller="ThreadViewController">
+	<div id="thread-view-containers">
+		<div id="thread-view-main-content">
+			<p class="important top-cover">{{ thread.title }}</p>
+
+			<div id="thread-view-main-content-tag">
+				<p>Tag:</p> 
+				<p class="tag">{{ thread.tag }}</p>
+			</div>
+
+			<div id="thread-view-main-content-og">
+				<div class="thread-view-main-content-profile">
+					<img src="./../img/avatar.png">
+					<p class="important">{{ thread.creator }}</p>
+				</div>
+				<p>{{ thread.body }}</p>
+				<p class="thread-view-main-content-date">{{ format(thread.creation) }}</p>
+			</div>
+
+			<div id="thread-view-main-content-replies">
+				<div class="thread-view-main-content-reply" ng-repeat="reply in replies">
+					<div class="thread-view-main-content-profile">
+						<img src="./../img/avatar.png">
+						<p class="important">{{ reply.creator }}</p>
+					</div>
+					<p>{{ reply.body }}</p>
+					<p class="thread-view-main-content-date">{{ format(reply.creation) }}</p>
+				</div>
+			</div>
+
+			<div id="thread-view-main-content-reply-view">
+				<textarea ng-model="new_reply.body"></textarea>
+				<button ng-click="postReply()">Post Reply</button>
+			</div>
+		</div>
+	</div>
+</div>

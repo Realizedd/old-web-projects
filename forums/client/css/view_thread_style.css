@@ -1,0 +1,95 @@
+#thread-view-containers {
+	margin: 25px auto;
+	width: 85%;
+	height: auto;
+	position: relative;
+}
+
+#thread-view-main-content {
+	background-color: #b8c4d0;
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+}
+
+#thread-view-main-content-tag {
+	width: 120px;
+	height: auto;
+	margin: 10px 5px;
+	background-color: white;
+	border-radius: 5px;
+	border: 2px solid #688394;
+}
+
+#thread-view-main-content-tag p:first-child {
+	margin: 10px 5px;
+	display: inline-block;
+	font-family: 'Baloo Bhai';
+	font-size: 12px;
+	color: #345579;
+}
+
+#thread-view-main-content-og {
+	border-top: 2px solid #688394;
+	border-bottom: 2px solid #688394;
+}
+
+#thread-view-main-content-og > p {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.thread-view-main-content-profile {
+	display: inline-block;
+	background-color: #859ab2;
+	height: auto;
+	width: auto;
+	padding: 10px;
+	border-left: 2px solid #688394;
+	border-right: 2px solid #688394;
+}
+
+.thread-view-main-content-profile img {
+	margin: 0px auto;
+	background-color: #92b7ce;
+	border-radius: 5px;
+	border-top: 2px solid gray;
+	border-left: 2px solid gray;
+	border-right: 2px solid gray;
+}
+
+.thread-view-main-content-date {
+	float: right;
+}
+
+.thread-view-main-content-reply {
+	border-bottom: 2px solid #688394;
+}
+
+.thread-view-main-content-reply > p {
+	display: inline-block;
+	vertical-align: top;
+}
+
+#thread-view-main-content-reply-view {
+	height: 160px;
+	width: 99.75%;
+	padding-top: 25px;
+	border-bottom: 2px solid #688394;
+	border-left: 2px solid #688394;
+}
+
+#thread-view-main-content-reply-view textarea {
+	resize: none;
+	display: block;
+	width: 95%;
+	height: 100px;
+	border: 2px solid #4879a5;
+	margin: 0 auto;
+	border-radius: 5px;
+}
+
+#thread-view-main-content-reply-view button {
+	float: right;
+	/*margin: 10px 20px;*/
+}

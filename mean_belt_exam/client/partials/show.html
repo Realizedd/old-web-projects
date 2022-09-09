@@ -1,0 +1,18 @@
+<div ng-controller="ViewController">
+	<a href="#/">Home</a>
+	<a href="#/question/{{ question._id }}/new_answer">Answer this Question</a>
+	<form ng-submit="logout()">
+		<input type="submit" value="Logout">
+	</form>
+	<h3>{{ question.message }}</h3>
+	<p>{{ question.description }}</p>
+	<div ng-repeat="answer in question.answers | orderBy: '-likes'">
+		<p>{{ answer.name }}:</p>
+		<h4>{{ answer.message }}</h4>
+		<p>{{ answer.description }}</p>
+		{{ answer.likes }} likes
+		<form ng-submit="add_like(answer)">
+			<input type="submit" value="Like!">
+		</form>
+	</div>
+</div>
